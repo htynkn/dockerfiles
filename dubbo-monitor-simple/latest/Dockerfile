@@ -6,6 +6,8 @@ RUN mvn package -f dubbo-monitor-simple
 
 
 FROM java:8
+RUN apt-get update && apt-get install net-tools
+
 RUN mkdir /apps
 COPY --from=0 /source/dubbo-monitor-simple/target/*.tar.gz /apps
 RUN tar -xvf /apps/dubbo-monitor-simple-2.0.0-assembly.tar.gz
