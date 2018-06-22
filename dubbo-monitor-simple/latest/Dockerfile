@@ -5,7 +5,10 @@ RUN git rev-parse HEAD
 RUN mvn package -f dubbo-monitor-simple
 
 
-FROM tomcat:8.0-jre8
-RUN rm -rf /usr/local/tomcat/webapps/
-COPY --from=0 /source/dubbo-monitor-simple/target/*.war /usr/local/tomcat/webapps/ROOT.war
+FROM java:8
+RUN mkdir /apps
+COPY --from=0 /source/dubbo-monitor-simple/target/*.tar.gz /apps
+RUN tar -xvf /apps/dubbo-monitor-simple-2.0.0-assembly.tar.gz
+ENTRYPOINT dubbo-monitor-simple-2.0.0/assembly.bin/start.sh
+
 EXPOSE 8080
