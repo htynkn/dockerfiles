@@ -5,7 +5,8 @@ RUN git rev-parse HEAD
 RUN mvn package -f dubbo-admin
 
 
-FROM tomcat:8.0-jre8
+FROM java:8
 RUN rm -rf /usr/local/tomcat/webapps/
-COPY --from=0 /source/dubbo-admin/target/*.war /usr/local/tomcat/webapps/ROOT.war
-EXPOSE 8080
+COPY --from=0 /source/dubbo-admin/target/*.jar /app.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+EXPOSE 7001
