@@ -12,6 +12,6 @@ RUN mkdir /apps
 COPY --from=0 /source/dubbo-monitor-simple/target/*.tar.gz /apps
 RUN tar -xvf /apps/dubbo-monitor-simple-2.0.0-assembly.tar.gz
 RUN wget http://central.maven.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar -P /dubbo-monitor-simple-2.0.0/lib/
-ENTRYPOINT dubbo-monitor-simple-2.0.0/assembly.bin/start.sh
+ENTRYPOINT dubbo-monitor-simple-2.0.0/assembly.bin/start.sh && tail -f dubbo-monitor-simple-2.0.0/logs/*
 
 EXPOSE 8080
