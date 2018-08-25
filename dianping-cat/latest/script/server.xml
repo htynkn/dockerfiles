@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config local-mode="false" hdfs-machine="false" job-machine="true" alert-machine="false">
+
+    <storage local-base-dir="/data/appdatas/cat/bucket/" max-hdfs-storage-time="15" local-report-storage-time="7"
+             local-logivew-storage-time="7">
+    </storage>
+
+    <console default-domain="Cat" show-cat-domain="true">
+        <remote-servers>127.0.0.1:8080</remote-servers>
+    </console>
+</config>
