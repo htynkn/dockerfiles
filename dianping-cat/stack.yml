@@ -5,6 +5,7 @@ services:
     image: mysql:5
     environment:
       - MYSQL_ROOT_PASSWORD=0
+      - MYSQL_DATABASE=cat
   cat:
     image: htynkn/dianping-cat
     depends_on:
