@@ -8,9 +8,9 @@
         <statement-cache-size>1000</statement-cache-size>
         <properties>
             <driver>com.mysql.jdbc.Driver</driver>
-            <url><![CDATA[${jdbc.url}]]></url>
-            <user>${jdbc.user}</user>
-            <password>${jdbc.password}</password>
+            <url><![CDATA[mysql://jdbcHost:3306/cat]]></url>
+            <user>jdbcUser</user>
+            <password>jdbcPassword</password>
             <connectionProperties>
                 <![CDATA[useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&socketTimeout=120000]]></connectionProperties>
         </properties>
@@ -22,9 +22,9 @@
         <statement-cache-size>1000</statement-cache-size>
         <properties>
             <driver>com.mysql.jdbc.Driver</driver>
-            <url><![CDATA[${jdbc.url}]]></url>
-            <user>${jdbc.user}</user>
-            <password>${jdbc.password}</password>
+            <url><![CDATA[mysql://jdbcHost:3306/cat]]></url>
+            <user>jdbcUser</user>
+            <password>jdbcPassword</password>
             <connectionProperties>
                 <![CDATA[useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&socketTimeout=120000]]></connectionProperties>
         </properties>

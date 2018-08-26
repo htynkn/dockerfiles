@@ -6,4 +6,8 @@ if [ "$RESULT" != "dailygraph" ]; then
     echo 'Init database from Cat.sql'
 fi
 
+sed -i "s/jdbcHost/$DATABASE_HOST/g" /data/appdatas/cat/datasources.xml
+sed -i "s/jdbcUser/$DATABASE_USER/g" /data/appdatas/cat/datasources.xml
+sed -i "s/jdbcPassword/$DATABASE_PASSWORD/g" /data/appdatas/cat/datasources.xml
+
 catalina.sh run
