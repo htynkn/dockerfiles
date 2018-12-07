@@ -3,7 +3,6 @@ RUN git clone --depth 1 --single-branch -b develop https://github.com/apache/inc
 WORKDIR /source
 RUN git rev-parse HEAD
 RUN mvn clean package -Dmaven.test.skip=true
-RUN ls /dubbo-admin-backend/target
 
 
 FROM java:8
