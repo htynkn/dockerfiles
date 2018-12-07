@@ -8,6 +8,6 @@ services:
     depends_on:
       - zookeeper
     ports:
-      - 7001
+      - 8080
     environment:
       - dubbo.registry.address=zookeeper://zookeeper:2181
