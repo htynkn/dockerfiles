@@ -12,6 +12,6 @@ services:
     environment:
       - dubbo.registry.address=zookeeper://zookeeper:2181
   provider:
-    image: bolingcavalry/dubbo_provider_tomcat
+    image: bolingcavalry/dubbo_provider_tomcat:0.0.1
     links:
       - "zookeeper:zkhost"
