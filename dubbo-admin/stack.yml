@@ -3,6 +3,8 @@ version: '3'
 services:
   zookeeper:
     image: zookeeper
+    ports:
+     - 2181:2181
   admin:
     image: htynkn/dubbo-admin
     depends_on:
@@ -11,7 +13,3 @@ services:
       - 8080
     environment:
       - dubbo.registry.address=zookeeper://zookeeper:2181
-  provider:
-    image: bolingcavalry/dubbo_provider_tomcat:0.0.1
-    links:
-      - "zookeeper:zkhost"
