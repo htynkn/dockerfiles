@@ -13,8 +13,4 @@ services:
       - 8080
     environment:
       - dubbo.registry.address=zookeeper://zookeeper:2181
-  user-manage-server:
-    image: htynkn/dubbo-demo-user-manage-server
-    environment:
-      - dubbo.registry.address=zookeeper://zookeeper:2181
 
