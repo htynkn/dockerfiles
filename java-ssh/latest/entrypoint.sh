@@ -24,3 +24,5 @@ chmod 0600 /home/${USER_NAME}/.ssh/authorized_keys
 
 service ssh start
 echo "Ready"
+
+exec "$@"
