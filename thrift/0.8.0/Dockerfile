@@ -4,6 +4,7 @@ FROM debian:wheezy
 ENV THRIFT_VERSION 0.8.0
 
 RUN buildDeps=" \
+                ca-certificates \
 		automake \
 		bison \
 		curl \
