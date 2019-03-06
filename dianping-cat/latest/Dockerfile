@@ -13,6 +13,6 @@ RUN chmod +x /app/*.sh
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-ADD http://unidal.org/nexus/service/local/repositories/releases/content/com/dianping/cat/cat-home/2.0.0/cat-home-2.0.0.war /usr/local/tomcat/webapps/cat.war
+ADD http://unidal.org/nexus/service/local/repositories/releases/content/com/dianping/cat/cat-home/3.0.0/cat-home-3.0.0.war /usr/local/tomcat/webapps/cat.war
 
 ENTRYPOINT /app/entrypoint.sh
