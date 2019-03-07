@@ -8,7 +8,7 @@ RUN ls dubbo-admin-distribution/target
 
 FROM openjdk:8-jre
 COPY --from=0 /source/dubbo-admin-distribution/target/dubbo-admin-0.1.jar /app.jar
-ADD health.sh /health.sh
 ENTRYPOINT ["java","-XX:+UnlockExperimentalVMOptions","-XX:+UseCGroupMemoryLimitForHeap","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
 EXPOSE 8080
-HEALTHCHECK --interval=10s --timeout=5s --start-period=120s --retries=3 CMD [ "/bin/bash /health.sh" ]
+HEALTHCHECK --interval=10s --timeout=3s --retries=5 --start-period=120s \
+CMD curl --silent --fail http://localhost:8080/swagger-resources || exit 1
