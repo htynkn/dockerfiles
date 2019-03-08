@@ -5,6 +5,14 @@ services:
     image: zookeeper
     ports:
      - 2181:2181
+  zkui:
+    image: tobilg/zookeeper-webui
+    ports:
+      - 8080
+    depends_on:
+      - zookeeper
+    environment:
+      ZK_DEFAULT_NODE: zookeeper:2181/
   admin:
     image: htynkn/dubbo-admin
     depends_on:
@@ -15,6 +23,3 @@ services:
       - admin.registry.address=zookeeper://zookeeper:2181
       - admin.config-center=zookeeper://zookeeper:2181
       - admin.metadata-report.address=zookeeper://zookeeper:2181
-
-
-
