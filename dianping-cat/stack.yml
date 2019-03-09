@@ -10,11 +10,11 @@ services:
   cat:
     image: htynkn/dianping-cat
     environment:
-      - MYSQL_URL: mysql
-      - MYSQL_PORT: 3306
-      - MYSQL_SCHEMA: cat
-      - MYSQL_USERNAME: root
-      - MYSQL_PASSWD: password
+      MYSQL_URL: mysql
+      MYSQL_PORT: 3306
+      MYSQL_SCHEMA: cat
+      MYSQL_USERNAME: root
+      MYSQL_PASSWD: password
     ports:
       - 8080
     depends_on:
