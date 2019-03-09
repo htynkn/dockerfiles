@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5
+    environment:
+      MYSQL_DATABASE: cat
+      MYSQL_ROOT_PASSWORD: password
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+  cat:
+    image: htynkn/dianping-cat
+    environment:
+      - MYSQL_URL: mysql
+      - MYSQL_PORT: 3306
+      - MYSQL_SCHEMA: cat
+      - MYSQL_USERNAME: root
+      - MYSQL_PASSWD: password
+    ports:
+      - 8080
+    depends_on:
+      - mysql
+  flyway:
+    image: boxfuse/flyway
+    command: -url=jdbc:mysql://mysql -schemas=cat -user=root -password=password -connectRetries=60 migrate
+    volumes:
+      - .:/flyway/sql
+    depends_on:
+      - mysql
