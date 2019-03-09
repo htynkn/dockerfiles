@@ -11,4 +11,3 @@ ADD datasources.xml /data/appdatas/cat/datasources.xml
 ADD datasources.sh /datasources.sh
 ADD client.xml /data/appdatas/cat/client.xml
 EXPOSE 8080
-ENTRYPOINT [ "chmod +x /datasources.sh && /datasources.sh && catalina.sh run" ]
