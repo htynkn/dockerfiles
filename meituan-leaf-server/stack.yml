@@ -13,7 +13,7 @@ services:
       - zookeeper
     environment:
       ZK_DEFAULT_NODE: zookeeper:2181/
-  admin:
+  leaf:
     image: htynkn/meituan-leaf-server
     depends_on:
       - zookeeper
