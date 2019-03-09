@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  zookeeper:
+    image: zookeeper
+    ports:
+     - 2181:2181
+  zkui:
+    image: tobilg/zookeeper-webui
+    ports:
+      - 8080
+    depends_on:
+      - zookeeper
+    environment:
+      ZK_DEFAULT_NODE: zookeeper:2181/
+  admin:
+    image: htynkn/meituan-leaf-server
+    depends_on:
+      - zookeeper
+    ports:
+      - 8080
