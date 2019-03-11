@@ -6,7 +6,7 @@ RUN ls cat-home/target
 
 FROM tomcat:7
 RUN rm -rf /usr/local/tomcat/webapps/**
-COPY --from=0 /source/cat-home/target/*.war  /usr/local/tomcat/webapps/ROOT.war
+COPY --from=0 /source/cat-home/target/*.war  /usr/local/tomcat/webapps/cat.war
 ADD datasources.xml /data/appdatas/cat/datasources.xml
 ADD datasources.sh /datasources.sh
 ADD client.xml /data/appdatas/cat/client.xml
