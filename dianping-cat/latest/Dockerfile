@@ -3,8 +3,7 @@ FROM centos:centos6
 USER root
 
 #UTILITIES
-RUN	yum install -y wget
-RUN	yum install -y tar
+RUN	yum install -y wget tar git
 
 #JAVA (OPENJDK 7)
 ENV JAVA_VERSION 1.7.0
@@ -42,7 +41,10 @@ ENV M2=$M2_HOME/bin
 ENV PATH=$M2:$PATH
 CMD java -version && mvn -version
 
-COPY . /root/workspace/cat
+RUN mkdir -p /root/workspace
+WORKDIR /root/workspace
+
+RUN git clone https://github.com/dianping/cat
 WORKDIR /root/workspace/cat
 
 RUN set -ex && mvn clean install -DskipTests
