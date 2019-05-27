@@ -17,6 +17,7 @@ services:
       MYSQL_PASSWD: password
     ports:
       - 8080
+      - 2280
     depends_on:
       - mysql
     command: /bin/sh -c 'chmod +x /datasources.sh && /datasources.sh && catalina.sh run'
