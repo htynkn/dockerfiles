@@ -22,7 +22,7 @@ services:
       - mysql
     command: /bin/sh -c 'chmod +x /datasources.sh && /datasources.sh && catalina.sh run'
   flyway:
-    image: boxfuse/flyway
+    image: boxfuse/flyway:5.2.4
     command: -url=jdbc:mysql://mysql -schemas=cat -user=root -password=password -connectRetries=60 migrate
     volumes:
       - .:/flyway/sql
