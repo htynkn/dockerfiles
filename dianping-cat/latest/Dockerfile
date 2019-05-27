@@ -1,4 +1,5 @@
 FROM centos:centos6
+LABEL maintainer="htynkn@gmail.com"
 
 USER root
 
