@@ -4,7 +4,7 @@ LABEL maintainer="htynkn@gmail.com"
 USER root
 
 ENV JAVA_VERSION 1.7.0
-RUN	yum install -y wget tar git java-1.7.0-openjdk java-1.7.0-openjdk-devel
+RUN yum install -y wget tar git java-1.7.0-openjdk java-1.7.0-openjdk-devel
 
 ENV JAVA_HOME /usr/lib/jvm/java
 
@@ -38,7 +38,7 @@ ENV PATH=$M2:$PATH
 RUN mkdir -p /root/workspace
 WORKDIR /root/workspace
 
-RUN git clone --depth=1 --single-branch --branch v3.0.0 https://github.com/dianping/cat
+RUN git clone --depth=1 --branch v3.0.0 https://github.com/dianping/cat
 WORKDIR /root/workspace/cat
 
 RUN set -ex && mvn clean install -DskipTests
