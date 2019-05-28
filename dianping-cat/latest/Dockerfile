@@ -3,20 +3,15 @@ LABEL maintainer="htynkn@gmail.com"
 
 USER root
 
-#UTILITIES
-RUN	yum install -y wget tar git
-
-#JAVA (OPENJDK 7)
 ENV JAVA_VERSION 1.7.0
-
-RUN yum install -y java-1.7.0-openjdk java-1.7.0-openjdk-devel
+RUN	yum install -y wget tar git java-1.7.0-openjdk java-1.7.0-openjdk-devel
 
 ENV JAVA_HOME /usr/lib/jvm/java
 
-#TOMCAT 7
+
 ENV CATALINA_HOME /usr/local/tomcat
-ENV PATH $CATALINA_HOME/bin:$PATH
 RUN mkdir -p "$CATALINA_HOME"
+ENV PATH $CATALINA_HOME/bin:$PATH
 WORKDIR $CATALINA_HOME
 
 
@@ -29,23 +24,21 @@ RUN wget -q https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION
     mv apache-tomcat-${TOMCAT_MINOR_VERSION}/* . && \
     rm -rf apache-tomcat-*
 
-#MAVEN
 ENV MAVEN_VERSION_MAJOR 3
 ENV MAVEN_VERSION_MINOR 5.2
 
-RUN wget http://archive.apache.org/dist/maven/maven-${MAVEN_VERSION_MAJOR}/${MAVEN_VERSION_MAJOR}.${MAVEN_VERSION_MINOR}/binaries/apache-maven-${MAVEN_VERSION_MAJOR}.${MAVEN_VERSION_MINOR}-bin.tar.gz
-RUN tar xvf apache-maven-${MAVEN_VERSION_MAJOR}.${MAVEN_VERSION_MINOR}-bin.tar.gz
-RUN rm apache-maven-${MAVEN_VERSION_MAJOR}.${MAVEN_VERSION_MINOR}-bin.tar.gz
-RUN mv apache-maven-${MAVEN_VERSION_MAJOR}.${MAVEN_VERSION_MINOR}  /usr/local/apache-maven
+RUN wget http://archive.apache.org/dist/maven/maven-${MAVEN_VERSION_MAJOR}/${MAVEN_VERSION_MAJOR}.${MAVEN_VERSION_MINOR}/binaries/apache-maven-${MAVEN_VERSION_MAJOR}.${MAVEN_VERSION_MINOR}-bin.tar.gz && \
+    tar xvf apache-maven-${MAVEN_VERSION_MAJOR}.${MAVEN_VERSION_MINOR}-bin.tar.gz && \
+    rm apache-maven-${MAVEN_VERSION_MAJOR}.${MAVEN_VERSION_MINOR}-bin.tar.gz && \
+    mv apache-maven-${MAVEN_VERSION_MAJOR}.${MAVEN_VERSION_MINOR}  /usr/local/apache-maven
 ENV M2_HOME=/usr/local/apache-maven
 ENV M2=$M2_HOME/bin
 ENV PATH=$M2:$PATH
-CMD java -version && mvn -version
 
 RUN mkdir -p /root/workspace
 WORKDIR /root/workspace
 
-RUN git clone https://github.com/dianping/cat
+RUN git clone --depth=1 https://github.com/dianping/cat
 WORKDIR /root/workspace/cat
 
 RUN set -ex && mvn clean install -DskipTests
