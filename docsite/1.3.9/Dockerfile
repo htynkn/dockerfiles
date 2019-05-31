@@ -1,0 +1,7 @@
+FROM ubuntu:18.04
+RUN apt-get install nodejs -y
+RUN npm install -g docsite@1.3.9
+RUN mkdir -p /home/root/.ssh && mkdir -p /home/root/workspace
+WORKDIR /home/root/workspace
+ADD script.sh /home/root/workspace/script.sh
+ENTRYPOINT [ "chmod +x ./script.sh && ./script.sh $0 $@" ]
