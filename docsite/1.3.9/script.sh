@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Start clone $1"
-git clone --branch $2 $1 source
+git clone --progress --branch $2 $1 source
 cd source
 
 echo "Install npm depdenency"
