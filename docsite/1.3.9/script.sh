@@ -4,7 +4,7 @@ echo "Start clone $1"
 git clone --branch $2 $1 source
 cd source
 
-ehco "Install npm depdenency"
+echo "Install npm depdenency"
 npm i
 docsite build
 
