@@ -12,3 +12,5 @@ echo "Start push changes back"
 git add .
 COMMIT_ID=`git rev-parse HEAD`
 git commit -m "generate from $COMMIT_ID"
+git push
+echo "Done"
