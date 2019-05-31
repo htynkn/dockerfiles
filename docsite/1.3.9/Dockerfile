@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-RUN apt-get update && apt-get install nodejs -y
+RUN apt-get update && apt-get install nodejs npm -y
 RUN npm install -g docsite@1.3.9
 RUN mkdir -p /home/root/.ssh && mkdir -p /home/root/workspace
 WORKDIR /home/root/workspace
