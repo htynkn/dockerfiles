@@ -4,4 +4,4 @@ RUN npm install -g docsite@1.3.9
 RUN mkdir -p /home/root/.ssh && mkdir -p /home/root/workspace
 WORKDIR /home/root/workspace
 ADD script.sh /home/root/workspace/script.sh
-ENTRYPOINT [ "chmod +x ./script.sh && ./script.sh $0 $@" ]
+ENTRYPOINT [ "chmod +x /home/root/workspace/script.sh && /home/root/workspace/script.sh $0 $@" ]
