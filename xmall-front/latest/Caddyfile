@@ -1,0 +1,5 @@
+:8080
+gzip
+root /srv
+proxy /member xmall-front-web:8080
+proxy /goods xmall-front-web:8080
