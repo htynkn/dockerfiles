@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 # Install prerequisites
-RUN apt-get update && apt-get install -y curl sudo iputils-ping
+RUN apt-get update && apt-get install -y curl sudo iputils-ping docker
 
 # Create github user and pull runner binary
 RUN useradd github \
