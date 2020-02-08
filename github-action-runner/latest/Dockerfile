@@ -9,8 +9,8 @@ RUN useradd github \
 	&& usermod -aG sudo github \
 	&& mkdir /app \
 	&& cd /app \
-	&& curl -O https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-x64-2.164.0.tar.gz \
-	&& tar xzf ./actions-runner-linux-x64-*.tar.gz \
+	&& curl -O -L https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-x64-2.164.0.tar.gz \
+	&& tar xzf ./actions-runner-linux-x64-2.164.0.tar.gz \
 	&& bash /app/bin/installdependencies.sh \
 	&& chown -R github:github /app
 
