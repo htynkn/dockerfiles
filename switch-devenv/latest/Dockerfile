@@ -1,5 +1,4 @@
 FROM devkitpro/devkita64:latest
 
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain nightly -y
 ENV PATH $HOME/.cargo/bin:$PATH
-RUN source $HOME/.cargo/env && rustup default nightly && cargo install xargo
