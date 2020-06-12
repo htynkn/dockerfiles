@@ -1,6 +1,6 @@
 FROM devkitpro/devkita64:latest
 
+RUN apt-get install -y llvm
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain nightly -y
 ENV PATH $HOME/.cargo/bin:$PATH
-RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
