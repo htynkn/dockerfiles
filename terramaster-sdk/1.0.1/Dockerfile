@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 LABEL maintainer="htynkn@gmail.com"
 LABEL Description="[UNOFFICIAL] This image is used to compile and package app for terra-master NAS application" Version="1.0.1"
 
-RUN apt update && apt install -y vim wget build-essential unzip && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install -y vim wget cmake build-essential unzip && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /sdk && wget http://dl.terra-master.com/cn/TerraMaster_APP_packaging_tool-1.03.zip -O /tmp/package_tool.zip && unzip /tmp/package_tool.zip -d /sdk && mv /sdk/TerraMaster_APP_packaging_tool-* /sdk/packaging_tool && wget http://dl.terra-master.com/cn/TerraMaster_TOS_x.86_64_toolchains_1.01.tar.gz -O /tmp/x86_64_sdk.tar.gz && tar -xf /tmp/x86_64_sdk.tar.gz -C /sdk && mv /sdk/builtroot_toolchain /sdk/x86_64_builtroot_toolchain && rm -rf /tmp/*.zip && rm -rf /tmp/*.tar.gz
 RUN ln -s /usr/lib/x86_64-linux-gnu/libmpfr.so.6 /usr/lib/x86_64-linux-gnu/libmpfr.so.4
